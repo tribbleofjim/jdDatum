@@ -1,9 +1,10 @@
 <template>
     <div id="categories">
+        <my-header />
         <el-row :gutter="20" class="cates">
             <div v-for="o in 8" :key="o">
-                <el-col :span="5" class="">
-                    <el-card class="box-card" shadow="hover">
+                <el-col :span="5">
+                    <el-card class="box-card" shadow="hover"  @click.native="goCategory(o)">
                         {{ '商品分类' + o }}
                     </el-card>
                 </el-col>
@@ -13,8 +14,16 @@
 </template>
 
 <script>
+import MyHeader from './MyHeader.vue'
+
 export default {
-  name: 'Categories'
+  components: { MyHeader },
+  name: 'Categories',
+  methods: {
+    goCategory (o) {
+      this.$router.push({path: `/category/${o}`})
+    }
+  }
 }
 </script>
 
