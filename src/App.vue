@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <echarts />
-    <ele-tree />
+    <categories />
   </div>
 </template>
 
@@ -10,8 +10,9 @@
 /* eslint-disable semi */
 import Echarts from "./components/Echarts.vue";
 import EleTree from "./components/EleTree.vue";
+import Categories from "./components/Categories.vue";
 export default {
-  components: { Echarts, EleTree },
+  components: { Echarts, EleTree, Categories },
   // eslint-disable-next-line comma-dangle
   name: "App",
 };
