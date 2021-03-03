@@ -1,8 +1,8 @@
 <template>
     <div id="categories">
-        <el-row :gutter="20">
-            <div v-for="o in 6" :key="o">
-                <el-col :span="6" class="">
+        <el-row :gutter="20" class="cates">
+            <div v-for="o in 8" :key="o">
+                <el-col :span="5" class="">
                     <el-card class="box-card" shadow="hover">
                         {{ '商品分类' + o }}
                     </el-card>
@@ -28,11 +28,16 @@ export default {
   }
 
   .box-card {
-    width: 320px;
+    width: 250px;
     height: 400px;
   }
 
   .el-col {
       padding-bottom: 10px;
   }
+
+  .cates {
+      padding-left: 200px;
+  }
+
 </style>
