@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <echarts />
+    <my-header />
     <categories />
   </div>
 </template>
@@ -8,11 +8,11 @@
 <script>
 /* eslint-disable quotes */
 /* eslint-disable semi */
-import Echarts from "./components/Echarts.vue";
-import EleTree from "./components/EleTree.vue";
+import MyHeader from "./components/MyHeader.vue";
 import Categories from "./components/Categories.vue";
+
 export default {
-  components: { Echarts, EleTree, Categories },
+  components: { MyHeader, Categories },
   // eslint-disable-next-line comma-dangle
   name: "App",
 };
