@@ -1,16 +1,18 @@
 <template>
     <div id="my-header">
         <el-row>
-            <el-col :span="24">
+            <el-col :span="6">
                 jd-datum
+            </el-col>
+            <el-col :span="6">
                 <el-input
                     placeholder="请输入内容"
                     prefix-icon="el-icon-search"
                     v-model="input2">
                 </el-input>
-                <el-divider></el-divider>
             </el-col>
         </el-row>
+        <el-divider></el-divider>
     </div>
 </template>
 
@@ -19,3 +21,9 @@ export default {
   name: 'MyHeader'
 }
 </script>
+
+<style>
+ .el-row {
+     height: 30px;
+ }
+</style>
