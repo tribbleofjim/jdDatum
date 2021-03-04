@@ -12,7 +12,7 @@
                 </el-input>
             </el-col>
             <el-col :span="2">
-                <el-button type="primary" plain>搜索</el-button>
+                <el-button type="primary" plain @click.native="goItem()">搜索</el-button>
             </el-col>
         </el-row>
         <el-divider></el-divider>
@@ -21,7 +21,12 @@
 
 <script>
 export default {
-  name: 'MyHeader'
+  name: 'MyHeader',
+  methods: {
+    goItem () {
+      this.$router.push({path: `/item`})
+    }
+  }
 }
 </script>
 

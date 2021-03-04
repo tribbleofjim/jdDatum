@@ -3,6 +3,7 @@ import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld'
 import Category from '@/components/cate/Category'
 import Categories from '@/components/Categories'
+import Item from '@/components/item/Item'
 
 Vue.use(Router)
 
@@ -17,6 +18,11 @@ export default new Router({
       path: '/category/:cate',
       name: 'Category',
       component: Category
+    },
+    {
+      path: '/item',
+      name: 'Item',
+      component: Item
     }
   ]
 })
