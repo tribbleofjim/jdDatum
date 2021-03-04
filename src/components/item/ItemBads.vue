@@ -6,7 +6,6 @@
             </div>
             <div class="text item">
                 <div class="block">
-                    <el-divider>差评关键词</el-divider>
                     <wordcloud
                         :data="defaultWords"
                         nameKey="name"
@@ -17,7 +16,6 @@
                     </wordcloud>
                 </div>
                 <div class="block">
-                    <el-divider>差评截取</el-divider>
                 </div>
             </div>
         </el-card>
@@ -28,6 +26,9 @@
  .box-card {
     width: 100%;
     height: 600px;
+ }
+ .el-row {
+   padding-bottom: 20px;
  }
 </style>
 

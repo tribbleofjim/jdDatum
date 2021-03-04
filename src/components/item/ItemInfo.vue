@@ -10,6 +10,14 @@
                 </div>
                 <el-divider>商品title</el-divider>
                 <span>{{ '【12期免息+扫地机】OPPO Reno5 5G手机新品 全网通 游戏 拍照 reno5pro+ Reno5 星河入梦 （8+128G） 全网通（晒单返30）' }}</span>
+                <el-divider>商品品牌</el-divider>
+                <span>oppo</span>
+                <el-divider>商品店铺</el-divider>
+                <span>OPPO京东自营官方旗舰店</span>
+                <el-divider>商品销量</el-divider>
+                <span>1700+</span>
+                <el-divider>商品icon</el-divider>
+                <span>放心购</span>
                 <div class="block">
                     <el-divider>商品推荐指数</el-divider>
                     <el-rate
@@ -28,6 +36,7 @@
 <style scoped>
  .box-card {
     width: 100%;
+    height: 600px;
  }
 </style>
 

@@ -27,7 +27,10 @@ export default {
           ]
         },
         xAxis: {type: 'category'},
-        yAxis: {gridIndex: 0},
+        yAxis: {
+          gridIndex: 0,
+          name: '平均价格'
+        },
         grid: {top: '55%'},
         series: [
           {type: 'line', smooth: true, seriesLayoutBy: 'row', emphasis: {focus: 'series'}},
