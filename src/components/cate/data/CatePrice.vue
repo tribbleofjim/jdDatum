@@ -1,16 +1,16 @@
 <template>
     <div class="catePrice">
-        <div id="main" style="width: 100%;height:500px;"></div>
+        <div id="cate_price" style="width: 100%;height:500px;"></div>
     </div>
 </template>
 
 <script>
 
 export default {
-  name: 'catePrice',
+  name: 'CatePrice',
   methods: {
     priceChart () {
-      var myChart = this.$echarts.init(document.getElementById('main'))
+      var myChart = this.$echarts.init(document.getElementById('cate_price'))
 
       var option = {
         tooltip: {
