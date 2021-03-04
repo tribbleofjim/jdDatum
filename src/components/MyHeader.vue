@@ -11,6 +11,9 @@
                     v-model="input2">
                 </el-input>
             </el-col>
+            <el-col :span="2">
+                <el-button type="primary" plain>搜索</el-button>
+            </el-col>
         </el-row>
         <el-divider></el-divider>
     </div>
