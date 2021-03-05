@@ -54,10 +54,7 @@ export default {
           boundaryGap: false,
           data: that.seasons,
           top: (idx * 100 / 7 + 5) + '%',
-          height: (100 / 7 - 10) + '%',
-          axisLabel: {
-            interval: 2
-          }
+          height: (100 / 7 - 10) + '%'
         })
         option.series.push({
           singleAxisIndex: idx,
@@ -65,7 +62,7 @@ export default {
           type: 'scatter',
           data: [],
           symbolSize: function (dataItem) {
-            return dataItem[1] * 4
+            return dataItem[1] * 5
           }
         })
       })
