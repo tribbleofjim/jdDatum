@@ -6,13 +6,15 @@
             </el-col>
             <el-col :span="6">
                 <el-input
+                    id="keyword"
                     placeholder="请输入内容"
                     prefix-icon="el-icon-search"
-                    v-model="input2">
+                    v-model="inputword"
+                    @input="change($event)">
                 </el-input>
             </el-col>
             <el-col :span="2">
-                <el-button type="primary" plain @click.native="goItem()">搜索</el-button>
+                <el-button type="primary" plain @click.native="goItemList()">搜索</el-button>
             </el-col>
         </el-row>
         <el-divider></el-divider>
@@ -23,8 +25,14 @@
 export default {
   name: 'MyHeader',
   methods: {
-    goItem () {
-      this.$router.push({path: `/item`})
+    goItemList () {
+      var keyword = document.getElementById('keyword').value
+      if (keyword) {
+        this.$router.push({path: `/itemList/${keyword}`})
+      }
+    },
+    change (e) {
+      this.$forceUpdate()
     }
   }
 }

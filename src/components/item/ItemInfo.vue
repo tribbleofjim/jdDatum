@@ -14,6 +14,8 @@
                 <span>oppo</span>
                 <el-divider>商品店铺</el-divider>
                 <span>OPPO京东自营官方旗舰店</span>
+                <el-divider>商品价格</el-divider>
+                <span>4500</span>
                 <el-divider>商品销量</el-divider>
                 <span>1700+</span>
                 <el-divider>商品icon</el-divider>
@@ -36,7 +38,7 @@
 <style scoped>
  .box-card {
     width: 100%;
-    height: 600px;
+    height: 650px;
  }
 </style>
 

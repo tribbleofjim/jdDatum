@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Category from '@/components/cate/Category'
 import Categories from '@/components/Categories'
 import Item from '@/components/item/Item'
+import ItemList from '@/components/item/ItemList'
 
 Vue.use(Router)
 
@@ -23,6 +24,16 @@ export default new Router({
       path: '/item',
       name: 'Item',
       component: Item
+    },
+    {
+      path: '/item/:skuId',
+      name: 'Item',
+      component: Item
+    },
+    {
+      path: '/itemList/:keyword',
+      name: 'ItemList',
+      component: ItemList
     }
   ]
 })
