@@ -1,7 +1,7 @@
 <template>
     <div id="category">
-      <el-divider><i class="el-icon-s-goods"></i>{{ '商品分类' + this.$route.params.cate }}</el-divider>
-      <cate-brand />
+      <el-divider><i class="el-icon-s-goods"></i>{{ this.$route.params.cate }}</el-divider>
+      <cate-brand :category='this.$route.params.cate'/>
       <cate-price />
       <cate-time />
     </div>
@@ -17,7 +17,7 @@ export default {
   name: 'Category',
   data () {
     return {
-      cate: -1
+      cate: this.$route.params.cate
     }
   }
 }
