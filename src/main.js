@@ -11,6 +11,7 @@ import axios from 'axios'
 Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts
 Vue.prototype.$axios = axios
+axios.defaults.baseURL = '/api'
 Vue.use(ElementUI)
 
 /* eslint-disable no-new */

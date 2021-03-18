@@ -7,8 +7,11 @@
 <script>
 export default {
   name: 'CateBrand',
+  data () {
+    return {}
+  },
   methods: {
-    brandChart () {
+    myChart (res) {
       var myChart = this.$echarts.init(document.getElementById('cate_brand'))
 
       var option = {
@@ -17,7 +20,8 @@ export default {
           formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
         legend: {
-          data: ['自然堂旗舰店', 'abb专卖店', '自然堂杭州专营店', '屈臣氏官方旗舰店', '屈臣氏广州专营店', '梦梦家小店', '自然堂上海专营店', '其他']
+        // data: ['自然堂旗舰店', 'abb专卖店', '自然堂杭州专营店', '屈臣氏官方旗舰店', '屈臣氏广州专营店', '梦梦家小店', '自然堂上海专营店', '其他']
+          data: res.data.shops
         },
         series: [
           {
@@ -32,11 +36,12 @@ export default {
             labelLine: {
               show: false
             },
-            data: [
-              {value: 1548, name: '自然堂', selected: true},
-              {value: 775, name: '屈臣氏'},
-              {value: 679, name: '其他'}
-            ]
+            // data: [
+            //   {value: 1548, name: '自然堂', selected: true},
+            //   {value: 775, name: '屈臣氏'},
+            //   {value: 679, name: '其他'}
+            // ]
+            data: res.data.core_items
           },
           {
             name: '推荐店铺',
@@ -77,21 +82,30 @@ export default {
                 }
               }
             },
-            data: [
-              {value: 1048, name: '自然堂旗舰店'},
-              {value: 335, name: 'abb专卖店'},
-              {value: 310, name: '自然堂杭州专营店'},
-              {value: 251, name: '屈臣氏官方旗舰店'},
-              {value: 234, name: '屈臣氏广州专营店'},
-              {value: 147, name: '梦梦家小店'},
-              {value: 135, name: '自然堂上海专营店'},
-              {value: 102, name: '其他'}
-            ]
+            // data: [
+            //   {value: 1048, name: '自然堂旗舰店'},
+            //   {value: 335, name: 'abb专卖店'},
+            //   {value: 310, name: '自然堂杭州专营店'},
+            //   {value: 251, name: '屈臣氏官方旗舰店'},
+            //   {value: 234, name: '屈臣氏广州专营店'},
+            //   {value: 147, name: '梦梦家小店'},
+            //   {value: 135, name: '自然堂上海专营店'},
+            //   {value: 102, name: '其他'}
+            // ]
+            data: res.data.shops_data
           }
         ]
       }
 
       myChart.setOption(option)
+    },
+    async brandChart () {
+      const data = await this.$axios.get('/category/brand', {
+        params: {
+          'category': '美妆护肤'
+        }
+      })
+      this.myChart(data)
     }
   },
   mounted () {
