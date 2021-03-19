@@ -7,8 +7,9 @@
 <script>
 export default {
   name: 'CateTime',
+  props: ['category'],
   methods: {
-    timeChart () {
+    drawChart (res) {
       var myChart = this.$echarts.init(document.getElementById('cate_time'))
 
       var option = {
@@ -18,13 +19,14 @@ export default {
           showContent: false
         },
         dataset: {
-          source: [
-            ['product', 'spring', 'summer', 'autumn', 'winter'],
-            ['cate1', 56.5, 82.1, 88.7, 70.1],
-            ['cate2', 51.1, 51.4, 55.1, 53.3],
-            ['cate3', 40.1, 62.2, 69.5, 36.4],
-            ['cate4', 25.2, 37.1, 41.2, 18]
-          ]
+          // source: [
+          //   ['product', 'spring', 'summer', 'autumn', 'winter'],
+          //   ['cate1', 56.5, 82.1, 88.7, 70.1],
+          //   ['cate2', 51.1, 51.4, 55.1, 53.3],
+          //   ['cate3', 40.1, 62.2, 69.5, 36.4],
+          //   ['cate4', 25.2, 37.1, 41.2, 18]
+          // ]
+          source: res.data.data
         },
         xAxis: {type: 'category'},
         yAxis: {
@@ -75,6 +77,14 @@ export default {
       })
 
       myChart.setOption(option)
+    },
+    async timeChart () {
+      const data = await this.$axios.get('/category/time', {
+        params: {
+          'category': this.$props.category
+        }
+      })
+      this.drawChart(data)
     }
   },
   mounted () {

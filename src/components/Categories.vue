@@ -57,7 +57,7 @@ export default {
 
   .box-card {
     width: 250px;
-    height: 400px;
+    height: 100px;
   }
 
   .el-col {

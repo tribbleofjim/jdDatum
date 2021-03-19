@@ -2,8 +2,8 @@
     <div id="category">
       <el-divider><i class="el-icon-s-goods"></i>{{ this.$route.params.cate }}</el-divider>
       <cate-brand :category='this.$route.params.cate'/>
-      <cate-price />
-      <cate-time />
+      <cate-price :category='this.$route.params.cate'/>
+      <cate-time :category='this.$route.params.cate'/>
     </div>
 </template>
 
