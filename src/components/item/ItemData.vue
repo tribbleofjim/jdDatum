@@ -21,15 +21,16 @@
 <script>
 export default {
   name: 'ItemData',
+  props: ['skuId'],
   data () {
     return {
-      seasons: ['spring', 'summer', 'autumn', 'winter'],
-      categories: ['32g', '64g', '128g'],
-      item_data: [[0, 0, 5], [0, 1, 2], [0, 2, 4], [0, 3, 7], [1, 0, 5], [1, 1, 8], [1, 2, 5], [1, 3, 9], [2, 0, 7], [2, 1, 3], [2, 2, 8], [2, 3, 4]]
+      seasons: ['spring', 'summer', 'autumn', 'winter']
+      // categories: ['32g', '64g', '128g'],
+      // item_data: [[0, 0, 5], [0, 1, 2], [0, 2, 4], [0, 3, 7], [1, 0, 5], [1, 1, 8], [1, 2, 5], [1, 3, 9], [2, 0, 7], [2, 1, 3], [2, 2, 8], [2, 3, 4]]
     }
   },
   methods: {
-    itemData () {
+    drawChart (res) {
       var that = this
       var chart = this.$echarts.init(document.getElementById('item_data'))
 
@@ -42,7 +43,7 @@ export default {
         series: []
       }
 
-      that.categories.forEach(function (category, idx) {
+      res.data.categories.forEach(function (category, idx) {
         option.title.push({
           textBaseline: 'middle',
           top: (idx + 0.5) * 100 / 7 + '%',
@@ -67,11 +68,19 @@ export default {
         })
       })
 
-      this.item_data.forEach(function (dataItem) {
+      res.data.item_data.forEach(function (dataItem) {
         option.series[dataItem[0]].data.push([dataItem[1], dataItem[2]])
       })
 
       chart.setOption(option)
+    },
+    async itemData () {
+      const res = await this.$axios.get('/item/data', {
+        params: {
+          'skuId': this.$props.skuId
+        }
+      })
+      this.drawChart(res)
     }
   },
   mounted () {

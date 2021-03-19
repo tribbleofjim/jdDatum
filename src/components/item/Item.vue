@@ -1,19 +1,9 @@
 <template>
     <div>
-        <!-- <el-row :gutter="20">
-            <el-col :span="12">
-                <item-info />
-                <item-data />
-            </el-col>
-            <el-col :span="12">
-                <item-goods />
-                <item-bads />
-            </el-col>
-        </el-row> -->
-        <item-info />
-        <item-data />
-        <item-goods />
-        <item-bads />
+        <item-info :skuId='this.$route.params.skuId'/>
+        <item-data :skuId='this.$route.params.skuId'/>
+        <item-goods :skuId='this.$route.params.skuId'/>
+        <item-bads :skuId='this.$route.params.skuId'/>
     </div>
 </template>
 

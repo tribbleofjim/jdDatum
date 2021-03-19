@@ -36,10 +36,23 @@ import wordcloud from 'vue-wordcloud'
 export default {
   name: 'ItemGoods',
   components: {wordcloud},
+  props: ['skuId'],
   methods: {
     wordClickHandler (name, value, vm) {
       console.log('wordClickHandler', name, value, vm)
+    },
+    async getWords () {
+      const res = await this.$axios.get('/item/goods', {
+        params: {
+          'skuId': this.$props.skuId
+        }
+      })
+      console.log(res)
+      this.defaultWords = res.data
     }
+  },
+  mounted () {
+    this.getWords()
   },
   data () {
     return {

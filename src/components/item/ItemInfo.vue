@@ -9,17 +9,17 @@
                     <el-avatar icon="el-icon-goods" shape="square" :size="50" :src="squareUrl"></el-avatar>
                 </div>
                 <el-divider>商品title</el-divider>
-                <span>{{ '【12期免息+扫地机】OPPO Reno5 5G手机新品 全网通 游戏 拍照 reno5pro+ Reno5 星河入梦 （8+128G） 全网通（晒单返30）' }}</span>
+                <span>{{ this.title }}</span>
                 <el-divider>商品品牌</el-divider>
-                <span>oppo</span>
+                <span>{{ this.productClass }}</span>
                 <el-divider>商品店铺</el-divider>
-                <span>OPPO京东自营官方旗舰店</span>
+                <span>{{ this.shop }}</span>
                 <el-divider>商品价格</el-divider>
-                <span>4500</span>
+                <span>{{ this.price }}</span>
                 <el-divider>商品销量</el-divider>
-                <span>1700+</span>
+                <span>{{ this.sellCount }}</span>
                 <el-divider>商品icon</el-divider>
-                <span>放心购</span>
+                <span>{{ this.icon }}</span>
                 <div class="block">
                     <el-divider>商品推荐指数</el-divider>
                     <el-rate
@@ -27,7 +27,7 @@
                         disabled
                         show-score
                         text-color="#ff9900"
-                        score-template="{value}">
+                        score-template="{this.recom}">
                     </el-rate>
                 </div>
             </div>
@@ -45,10 +45,38 @@
 <script>
 export default {
   name: 'ItemInfo',
+  props: ['skuId'],
   data () {
     return {
-      value: 3.7
+      recom: 0.0,
+      keyword: '',
+      title: '',
+      price: '',
+      shop: '',
+      sellCount: '',
+      icon: '',
+      productClass: ''
     }
+  },
+  methods: {
+    async getItemInfo () {
+      const res = await this.$axios.get('/item/info', {
+        params: {
+          'skuId': this.$props.skuId
+        }
+      })
+      this.recom = res.data.recom
+      this.keyword = res.data.keyword
+      this.title = res.data.title
+      this.price = res.data.price
+      this.shop = res.data.shop
+      this.sellCount = res.data.sellCount
+      this.icon = res.data.icon
+      this.productClass = res.data.productClass
+    }
+  },
+  mounted () {
+    this.getItemInfo()
   }
 }
 </script>
