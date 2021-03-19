@@ -14,7 +14,7 @@
                 </el-input>
             </el-col>
             <el-col :span="2">
-                <el-button type="primary" plain @click.native="goItemList()">搜索</el-button>
+                <el-button type="primary" plain @click.native="goItemList()">搜索商品</el-button>
             </el-col>
         </el-row>
         <el-divider></el-divider>

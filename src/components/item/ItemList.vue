@@ -1,15 +1,44 @@
 <template>
     <div>
-      {{ '搜索商品:' + this.$route.params.keyword }}
+      <el-row>
+        {{ '搜索:' + this.$route.params.keyword }}
+      </el-row>
+      <el-row gutter="40">
+        <el-col :span="3">
+          <el-select v-model="nums_value" placeholder="选择展示条数">
+            <el-option
+              v-for="item in nums"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="3">
+          <el-select v-model="price_value" placeholder="筛选价格">
+            <el-option
+              v-for="item in priceInterval"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="1">
+          <el-button type="primary" icon="el-icon-refresh-right">刷新</el-button>
+        </el-col>
+      </el-row>
+      <div>
         <el-table
-      :data="tableData"
+      :data="this.tableData"
       highlight-current-row
       @current-change="handleCurrentChange"
-      style="width: 100%">
+      v-infinite-scroll="load"
+      style="width: 100%; overflow:auto">
       <el-table-column
-        prop="category"
+        prop="productClass"
         label="分类"
-        width="200">
+        width="220">
       </el-table-column>
       <el-table-column
         prop="title"
@@ -21,16 +50,12 @@
         width="100">
       </el-table-column>
       <el-table-column
-        prop="recom"
-        label="商品推荐指数"
-        width="100">
-      </el-table-column>
-      <el-table-column
         prop="skuId"
         label="skuId"
         width="180">
       </el-table-column>
-    </el-table>
+        </el-table>
+      </div>
     </div>
 </template>
 
@@ -39,31 +64,63 @@ export default {
   name: 'ItemList',
   data () {
     return {
-      tableData: [{
-        category: '手机通讯-手机-手机-oppo',
-        title: '12期免息+扫地机】OPPO Reno5 5G手机新品 全网通 游戏 拍照 reno5pro+ Reno5 星河入梦 （8+128G） 全网通（晒单返30）',
-        price: 4500.00,
-        recom: 3.7,
-        skuId: 1347891
+      tableData: [],
+      nums: [{
+        value: '20',
+        label: '20'
       }, {
-        category: '手机通讯-手机-手机-小米(MI)',
-        title: 'Redmi 9A 5000mAh大电量 大屏幕大字体大音量 1300万AI相机 八核处理器 人脸解锁 4GB+64GB 砂石黑 游戏智能手机 小米 红米',
-        price: 599.00,
-        recom: 2.4,
-        skuId: 32457984
+        value: '40',
+        label: '40'
       }, {
-        category: '手机通讯-手机-手机-Apple',
-        title: 'Apple iPhone 12 (A2404) 128GB 白色 支持移动联通电信5G 双卡双待手机',
-        price: 6799.00,
-        recom: 4.6,
-        skuId: 245348759238
-      }]
+        value: '60',
+        label: '60'
+      }, {
+        value: '80',
+        label: '80'
+      }, {
+        value: '100',
+        label: '100'
+      }],
+      priceInterval: [{
+        value: '默认',
+        label: '默认'
+      },
+      {
+        value: '0-100',
+        label: '0-100'
+      }, {
+        value: '100-500',
+        label: '100-500'
+      }, {
+        value: '500-1000',
+        label: '500-1000'
+      }, {
+        value: '1000以上',
+        label: '1000以上'
+      }],
+      nums_value: '',
+      price_value: ''
     }
   },
   methods: {
     handleCurrentChange (val) {
       this.$router.push({path: `/item/${val.skuId}`})
+    },
+    async searchItems () {
+      const items = await this.$axios.get('/item/search', {
+        params: {
+          'keyword': this.$route.params.keyword
+        }
+      })
+      // console.log(items)
+      this.tableData = items.data
+    },
+    load () {
+      this.count += 2
     }
+  },
+  mounted () {
+    this.searchItems()
   }
 }
 </script>
