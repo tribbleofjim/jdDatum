@@ -27,7 +27,7 @@
                         disabled
                         show-score
                         text-color="#ff9900"
-                        score-template="{this.recom}">
+                        score-template='{value}'>
                     </el-rate>
                 </div>
             </div>
@@ -48,7 +48,7 @@ export default {
   props: ['skuId'],
   data () {
     return {
-      recom: 0.0,
+      value: 0.0,
       keyword: '',
       title: '',
       price: '',
@@ -65,7 +65,7 @@ export default {
           'skuId': this.$props.skuId
         }
       })
-      this.recom = res.data.recom
+      this.value = res.data.recom
       this.keyword = res.data.keyword
       this.title = res.data.title
       this.price = res.data.price
