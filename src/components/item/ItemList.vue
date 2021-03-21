@@ -25,7 +25,7 @@
           </el-select>
         </el-col>
         <el-col :span="1">
-          <el-button type="primary" icon="el-icon-refresh-right">刷新</el-button>
+          <el-button type="primary" icon="el-icon-refresh-right" @click="refresh()">刷新</el-button>
         </el-col>
       </el-row>
       <div>
@@ -112,11 +112,21 @@ export default {
           'keyword': this.$route.params.keyword
         }
       })
-      // console.log(items)
       this.tableData = items.data
     },
     load () {
       this.count += 2
+    },
+    async refresh () {
+      const res = await this.$axios.get('/item/search', {
+        params: {
+          'keyword': this.$route.params.keyword,
+          'size': this.nums_value,
+          'price_interval': this.price_value
+        }
+      })
+      console.log(res)
+      this.tableData = res.data
     }
   },
   mounted () {
