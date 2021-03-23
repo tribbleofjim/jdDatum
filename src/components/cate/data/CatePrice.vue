@@ -13,6 +13,12 @@ export default {
     drawChart (res) {
       var myChart = this.$echarts.init(document.getElementById('cate_price'))
 
+      var minValue = Math.min.apply(null, res.data.min_values)
+      var maxValue = Math.max.apply(null, res.data.max_values)
+      maxValue = (maxValue > 10000) ? 10000 : maxValue
+      var myInterval = parseFloat(((maxValue - minValue) / 6).toFixed(1))
+      // console.log(maxValue, minValue, myInterval)
+
       var option = {
         tooltip: {
           trigger: 'axis',
@@ -48,9 +54,9 @@ export default {
           {
             type: 'value',
             name: '价格',
-            min: 0,
-            max: 1000,
-            interval: 200,
+            min: minValue,
+            max: maxValue,
+            interval: myInterval,
             axisLabel: {
               formatter: '{value} ¥'
             }
