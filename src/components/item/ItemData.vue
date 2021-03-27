@@ -24,7 +24,7 @@ export default {
   props: ['skuId'],
   data () {
     return {
-      seasons: ['spring', 'summer', 'autumn', 'winter']
+      months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
       // categories: ['32g', '64g', '128g'],
       // item_data: [[0, 0, 5], [0, 1, 2], [0, 2, 4], [0, 3, 7], [1, 0, 5], [1, 1, 8], [1, 2, 5], [1, 3, 9], [2, 0, 7], [2, 1, 3], [2, 2, 8], [2, 3, 4]]
     }
@@ -53,7 +53,7 @@ export default {
           left: 150,
           type: 'category',
           boundaryGap: false,
-          data: that.seasons,
+          data: that.months,
           top: (idx * 100 / 7 + 5) + '%',
           height: (100 / 7 - 10) + '%'
         })
