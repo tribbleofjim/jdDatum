@@ -7,12 +7,14 @@ import App from './App'
 import router from './router'
 import echarts from 'echarts'
 import axios from 'axios'
+import VueCookies from 'vue-cookies'
 
 Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts
 Vue.prototype.$axios = axios
 axios.defaults.baseURL = '/api'
 Vue.use(ElementUI)
+Vue.use(VueCookies)
 
 /* eslint-disable no-new */
 new Vue({

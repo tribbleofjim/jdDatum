@@ -19,6 +19,7 @@
     "element-plus": "^1.0.2-beta.33",
     "element-ui": "^2.15.1",
     "vue": "^2.5.2",
+    "vue-cookies": "^1.7.4",
     "vue-router": "^3.0.1",
     "vue-wordcloud": "^1.1.1"
   },

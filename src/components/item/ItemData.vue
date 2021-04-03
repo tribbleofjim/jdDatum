@@ -2,7 +2,7 @@
     <div>
         <el-card class="box-card" shadow="hover">
             <div slot="header" class="clearfix">
-                <span>商品购买季节-型号点状图</span>
+                <span>商品购买月份-型号点状图</span>
             </div>
             <div class="text item">
                 <div id="item_data" style="width: 100%; height: 600px"></div>
@@ -13,7 +13,7 @@
 
 <style scoped>
  .box-card {
-    width: 100%;
+    width: 60%;
     height: 100%;
  }
 </style>
