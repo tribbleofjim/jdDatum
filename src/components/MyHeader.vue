@@ -37,24 +37,35 @@
           width="200"
           trigger="manual"
           v-model="pass_visible">
-          旧密码:
-          <el-input v-model="input" placeholder="请输入旧密码" id="old_pass"></el-input>
-          新密码:
-          <el-input v-model="input" placeholder="请输入新密码" id="new_pass"></el-input>
+          <el-form ref="form" :model="changePassForm">
+            <el-form-item label="旧密码">
+              <el-input v-model="changePassForm.oldPass" placeholder="请输入旧密码" show-password @input="change($event)"></el-input>
+            </el-form-item>
+            <el-form-item label="新密码">
+              <el-input v-model="changePassForm.newPass" placeholder="请输入新密码" show-password @input="change($event)"></el-input>
+            </el-form-item>
+          </el-form>
           <el-button type="primary" icon="el-icon-s-promotion" @click="changePass()">提交</el-button>
+          <el-button type="primary" icon="el-icon-close" @click="cancel('pass')">取消</el-button>
         </el-popover>
 
         <el-popover
-          placement="bottom"
+          placement="top"
           title="修改昵称"
           width="200"
           trigger="manual"
+          offset="4"
           v-model="nickname_visible">
-          密码:
-          <el-input v-model="input" placeholder="请输入密码" id="pass"></el-input>
-          昵称:
-          <el-input v-model="input" placeholder="请输入新昵称" id="new_nickname"></el-input>
+          <el-form ref="form" :model="changeNickForm">
+            <el-form-item label="密码">
+              <el-input v-model="changeNickForm.password" placeholder="请输入密码" show-password @input="change($event)"></el-input>
+            </el-form-item>
+            <el-form-item label="新昵称">
+              <el-input v-model="changeNickForm.newNickname" placeholder="请输入新昵称" show-password @input="change($event)"></el-input>
+            </el-form-item>
+          </el-form>
           <el-button type="primary" icon="el-icon-s-promotion" @click="changeNickname()">提交</el-button>
+          <el-button type="primary" icon="el-icon-close" @click="cancel('nickname')">取消</el-button>
         </el-popover>
     </div>
 </template>
@@ -75,7 +86,15 @@ export default {
   data () {
     return {
       pass_visible: false,
-      nickname_visible: false
+      nickname_visible: false,
+      changePassForm: {
+        oldPass: '',
+        newPass: ''
+      },
+      changeNickForm: {
+        password: '',
+        newNickname: ''
+      }
     }
   },
   methods: {
@@ -102,12 +121,19 @@ export default {
         this.$cookies.remove('user_phone')
       }
     },
+    cancel (command) {
+      if (command === 'pass') {
+        this.pass_visible = false
+      } else if (command === 'nickname') {
+        this.nickname_visible = false
+      }
+    },
     changePass () {
       this.$axios.post('modifyPassword', {
         params: {
           phone: this.$cookies.get('user_phone'),
-          oldPass: document.getElementById('old_pass').value,
-          newPass: document.getElementById('new_pass').value
+          oldPass: this.changePassForm.oldPass,
+          newPass: this.changePassForm.newPass
         }
       })
     },
@@ -115,8 +141,8 @@ export default {
       this.$axios.post('modifyNickname', {
         params: {
           phone: this.$cookies.get('user_phone'),
-          password: document.getElementById('pass').value,
-          newNickname: document.getElementById('new_nickname').value
+          password: this.changeNickForm.password,
+          newNickname: this.changeNickForm.newNickname
         }
       })
     }
