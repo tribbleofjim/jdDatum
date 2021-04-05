@@ -8,28 +8,70 @@
                 <div class="block">
                     <el-avatar icon="el-icon-goods" shape="square" :size="50" :src="squareUrl"></el-avatar>
                 </div>
-                <el-divider>商品title</el-divider>
-                <span>{{ this.title }}</span>
-                <el-divider>商品品牌</el-divider>
-                <span>{{ this.productClass }}</span>
-                <el-divider>商品店铺</el-divider>
-                <span>{{ this.shop }}</span>
-                <el-divider>商品价格</el-divider>
-                <span>{{ this.price }}</span>
-                <el-divider>商品销量</el-divider>
-                <span>{{ this.sellCount }}</span>
-                <el-divider>商品icon</el-divider>
-                <span>{{ this.icon }}</span>
-                <div class="block">
-                    <el-divider>商品推荐指数</el-divider>
-                    <el-rate
-                        v-model="value"
-                        disabled
-                        show-score
-                        text-color="#ff9900"
-                        score-template='{value}'>
-                    </el-rate>
-                </div>
+                <el-row>
+                  <el-col :span="12">
+                    <span class="info">商品title</span><br>
+                  </el-col>
+                  <el-col :span="12">
+                    <span class="info">{{ this.title }}</span><br>
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-col :span="12">
+                    <span class="info">商品品牌</span><br>
+                  </el-col>
+                  <el-col :span="12">
+                    <span class="info">{{ this.productClass }}</span><br>
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-col :span="12">
+                    <span class="info">商品店铺</span><br>
+                  </el-col>
+                  <el-col :span="12">
+                    <span class="info">{{ this.shop }}</span><br>
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-col :span="12">
+                    <span class="info">商品价格</span><br>
+                  </el-col>
+                  <el-col :span="12">
+                    <span class="info">{{ this.price }}</span><br>
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-col :span="12">
+                    <span class="info">商品销量</span><br>
+                  </el-col>
+                  <el-col :span="12">
+                    <span class="info">{{ this.sellCount }}</span><br>
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-col :span="12">
+                    <span class="info">商品icon</span><br>
+                  </el-col>
+                  <el-col :span="12">
+                    <span class="info">{{ this.icon }}</span><br>
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-col :span="12">
+                    <span class="info">商品推荐指数</span><br>
+                  </el-col>
+                  <el-col :span="12">
+                    <div class="block info">
+                        <el-rate
+                            v-model="value"
+                            disabled
+                            show-score
+                            text-color="#ff9900"
+                            score-template='{value}'>
+                        </el-rate>
+                    </div>
+                  </el-col>
+                </el-row>
             </div>
         </el-card>
     </div>
@@ -39,6 +81,10 @@
  .box-card {
     width: 100%;
     height: 650px;
+ }
+ .el-row {
+   margin-top: 15px;
+   margin-bottom: 30px;
  }
 </style>
 
