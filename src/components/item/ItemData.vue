@@ -82,22 +82,21 @@ export default {
         })
       })
 
-      res.data.item_data.forEach(function (dataItem) {
+      res.data.month_data.forEach(function (dataItem) {
         option.series[dataItem[0]].data.push([dataItem[1], dataItem[2]])
       })
 
       chart.setOption(option)
     },
     drawSeasonChart (res) {
-      var chart = this.$echarts.init(document.getElementById('item_season_datas'))
-
+      var chart = this.$echarts.init(document.getElementById('item_season_data'))
       var option = {
         title: {
           text: '商品购买季节-型号雷达图'
         },
         tooltip: {},
         legend: {
-          data: ['型号1', '型号2']
+          data: res.data.categories
         },
         radar: {
         // shape: 'circle',
@@ -111,16 +110,16 @@ export default {
           },
           indicator: [
             {
-              name: '春季', max: 50
+              name: '春季', max: res.data.max_value
             },
             {
-              name: '夏季', max: 50
+              name: '夏季', max: res.data.max_value
             },
             {
-              name: '秋季', max: 50
+              name: '秋季', max: res.data.max_value
             },
             {
-              name: '冬季', max: 50
+              name: '冬季', max: res.data.max_value
             }
           ]
         },
@@ -128,16 +127,17 @@ export default {
           name: '型号',
           type: 'radar',
           // areaStyle: {normal: {}},
-          data: [
-            {
-              value: [23, 47, 14, 12],
-              name: '型号1'
-            },
-            {
-              value: [41, 42, 13, 24],
-              name: '型号2'
-            }
-          ]
+          data: res.data.season_data
+          // [
+          //   {
+          //     value: [23, 47, 14, 12],
+          //     name: '型号1'
+          //   },
+          //   {
+          //     value: [41, 42, 13, 24],
+          //     name: '型号2'
+          //   }
+          // ]
         }]
       }
 

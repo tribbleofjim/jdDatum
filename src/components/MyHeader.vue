@@ -31,12 +31,7 @@
         </el-row>
         <el-divider></el-divider>
 
-        <el-popover
-          placement="bottom"
-          title="修改密码"
-          width="200"
-          trigger="manual"
-          v-model="pass_visible">
+        <el-dialog title="修改密码" :visible.sync="pass_visible">
           <el-form ref="form" :model="changePassForm">
             <el-form-item label="旧密码">
               <el-input v-model="changePassForm.oldPass" placeholder="请输入旧密码" show-password @input="change($event)"></el-input>
@@ -45,28 +40,26 @@
               <el-input v-model="changePassForm.newPass" placeholder="请输入新密码" show-password @input="change($event)"></el-input>
             </el-form-item>
           </el-form>
-          <el-button type="primary" icon="el-icon-s-promotion" @click="changePass()">提交</el-button>
-          <el-button type="primary" icon="el-icon-close" @click="cancel('pass')">取消</el-button>
-        </el-popover>
+          <div slot="footer" class="dialog-footer">
+            <el-button @click="pass_visible = false">取消</el-button>
+            <el-button type="primary" @click="changePass()">提交</el-button>
+          </div>
+        </el-dialog>
 
-        <el-popover
-          placement="top"
-          title="修改昵称"
-          width="200"
-          trigger="manual"
-          offset="4"
-          v-model="nickname_visible">
+        <el-dialog title="修改昵称" :visible.sync="nickname_visible">
           <el-form ref="form" :model="changeNickForm">
             <el-form-item label="密码">
               <el-input v-model="changeNickForm.password" placeholder="请输入密码" show-password @input="change($event)"></el-input>
             </el-form-item>
             <el-form-item label="新昵称">
-              <el-input v-model="changeNickForm.newNickname" placeholder="请输入新昵称" show-password @input="change($event)"></el-input>
+              <el-input v-model="changeNickForm.newNickname" placeholder="请输入新昵称" @input="change($event)"></el-input>
             </el-form-item>
           </el-form>
-          <el-button type="primary" icon="el-icon-s-promotion" @click="changeNickname()">提交</el-button>
-          <el-button type="primary" icon="el-icon-close" @click="cancel('nickname')">取消</el-button>
-        </el-popover>
+          <div slot="footer" class="dialog-footer">
+            <el-button @click="nickname_visible = false">取消</el-button>
+            <el-button type="primary" @click="changeNickname()">提交</el-button>
+          </div>
+        </el-dialog>
     </div>
 </template>
 
@@ -119,13 +112,6 @@ export default {
           }
         })
         this.$cookies.remove('user_phone')
-      }
-    },
-    cancel (command) {
-      if (command === 'pass') {
-        this.pass_visible = false
-      } else if (command === 'nickname') {
-        this.nickname_visible = false
       }
     },
     changePass () {
