@@ -1,33 +1,37 @@
 <template>
     <div>
-        <el-card class="box-card month" shadow="hover">
+      <el-row>
+        <el-col :span="14">
+          <el-card class="box-card month" shadow="hover">
             <div slot="header" class="clearfix">
                 <span>商品购买月份-型号点状图</span>
             </div>
             <div class="text item">
-                <div id="item_data" style="width: 100%; height: 600px"></div>
+                <div id="item_data" style="width: 800px; height: 600px"></div>
             </div>
-        </el-card>
-        <div>
-        <el-card class="box-card season" shadow="hover">
+          </el-card>
+        </el-col>
+        <el-col :span="10">
+          <el-card class="box-card season" shadow="hover">
             <div slot="header" class="clearfix">
                 <span>商品购买季节-型号雷达图</span>
             </div>
             <div class="text item">
-                <div id="item_season_data" style="width: 100%; height: 600px"></div>
+                <div id="item_season_data" style="width: 400px; height: 600px"></div>
             </div>
-        </el-card>
-    </div>
+          </el-card>
+        </el-col>
+      </el-row>
     </div>
 </template>
 
 <style scoped>
  .month {
-    width: 60%;
+    width: 825px;
     height: 100%;
  }
  .season {
-    width: 40%;
+    width: 580px;
     height: 100%;
  }
 </style>
@@ -92,7 +96,6 @@ export default {
       var chart = this.$echarts.init(document.getElementById('item_season_data'))
       var option = {
         title: {
-          text: '商品购买季节-型号雷达图'
         },
         tooltip: {},
         legend: {

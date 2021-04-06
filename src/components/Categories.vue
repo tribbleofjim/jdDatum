@@ -2,10 +2,11 @@
     <div id="categories">
         <my-header />
         <el-row :gutter="20" class="cates">
-            <div v-for="o in this.categories" :key="o">
+            <div v-for="(o, index) in this.categories" :key="o">
                 <el-col :span="5">
                     <el-card class="box-card" shadow="hover"  @click.native="goCategory(o)">
-                        {{ o }}
+                      <font-awesome-icon :icon=icons[index] size="3x"/><br>
+                      {{ o }}
                     </el-card>
                 </el-col>
             </div>
@@ -21,7 +22,11 @@ export default {
   name: 'Categories',
   data () {
     return {
-      'categories': []
+      'categories': [],
+      'icons': ['paint-brush', 'tractor', 'school', 'toilet-paper', 'gifts', 'book', 'guitar', 'mobile-alt',
+        'tv', 'baby', 'shoe-prints', 'dog', 'hamburger', 'laptop', 'camera-retro', 'car-side', 'tshirt', 'briefcase-medical',
+        'pump-soap', 'archive', 'utensils', 'couch', 'skiing-nordic', 'truck', 'suitcase-rolling', 'clock', 'wine-glass-alt',
+        'people-carry', 'charging-station', 'fish', 'umbrella-beach', 'feather-alt', 'warehouse']
     }
   },
   methods: {
