@@ -1,21 +1,29 @@
 <template>
-    <div>
-      <span class="title">jd-datum</span>
-      <el-form ref="form" :model="loginForm" label-width="80px">
-        <el-form-item label="手机号">
-          <el-input v-model="loginForm.phone"></el-input>
-        </el-form-item>
-        <el-form-item label="密码">
-          <el-input v-model="loginForm.password" show-password></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="login">登录</el-button>
-          <el-button>取消</el-button>
-        </el-form-item>
-      </el-form>
-      <span>没有账号?</span>
-      <el-button type="text" @click="register_visible = true">立即注册</el-button>
-      <el-button type="text" @click="goIndex()">跳转首页</el-button>
+    <div class="login">
+      <el-row>
+        <span style="font-family: Helvetica Neue; font-size: 20px Extra large;">jd-datum</span>
+      </el-row>
+
+      <el-row>
+        <el-col :span="10" :offset="7">
+          <el-form ref="form" :model="loginForm" label-width="80px">
+            <el-form-item label="手机号">
+              <el-input v-model="loginForm.phone"></el-input>
+            </el-form-item>
+            <el-form-item label="密码">
+              <el-input v-model="loginForm.password" show-password></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="login">登录</el-button>
+              <el-button>取消</el-button>
+            </el-form-item>
+          </el-form>
+          <span>没有账号?</span>
+          <el-button type="text" @click="register_visible = true">立即注册</el-button>
+          <el-button type="text" @click="goIndex()">跳转首页</el-button>
+        </el-col>
+      </el-row>
+
       <el-dialog title="注册" :visible.sync="register_visible">
           <el-form ref="form" :model="registerForm">
             <el-form-item label="手机号">
@@ -39,6 +47,11 @@
   .title {
     font-family: Helvetica Neue;
     font-size: 20px Extra large;
+  }
+  .login {
+    width: 100%;
+    height: 600px;
+    background-image: url("../assets/bule.gif");
   }
 </style>
 <script>
