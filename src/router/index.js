@@ -9,12 +9,12 @@ import ItemList from '@/components/item/ItemList'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faPaintBrush, faTractor, faSchool, faToiletPaper, faGifts, faBook, faGuitar, faMobileAlt,
-  faTv, faBaby, faShoePrints, faDog, faHamburger, faLaptop, faCameraRetro, faCarSide, faTshirt, faBriefcaseMedical,
+  faAd, faBaby, faShoePrints, faDog, faHamburger, faLaptop, faCameraRetro, faCarSide, faTshirt, faBriefcaseMedical,
   faPumpSoap, faArchive, faUtensils, faCouch, faSkiingNordic, faTruck, faSuitcaseRolling, faClock, faWineGlassAlt,
   faPeopleCarry, faChargingStation, faFish, faUmbrellaBeach, faFeatherAlt, faWarehouse } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faPaintBrush, faTractor, faSchool, faToiletPaper, faGifts, faBook, faGuitar, faMobileAlt,
-  faTv, faBaby, faShoePrints, faDog, faHamburger, faLaptop, faCameraRetro, faCarSide, faTshirt, faBriefcaseMedical,
+  faAd, faBaby, faShoePrints, faDog, faHamburger, faLaptop, faCameraRetro, faCarSide, faTshirt, faBriefcaseMedical,
   faPumpSoap, faArchive, faUtensils, faCouch, faSkiingNordic, faTruck, faSuitcaseRolling, faClock, faWineGlassAlt,
   faPeopleCarry, faChargingStation, faFish, faUmbrellaBeach, faFeatherAlt, faWarehouse)
 

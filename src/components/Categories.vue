@@ -24,7 +24,7 @@ export default {
     return {
       'categories': [],
       'icons': ['paint-brush', 'tractor', 'school', 'toilet-paper', 'gifts', 'book', 'guitar', 'mobile-alt',
-        'tv', 'baby', 'shoe-prints', 'dog', 'hamburger', 'laptop', 'camera-retro', 'car-side', 'tshirt', 'briefcase-medical',
+        'ad', 'baby', 'shoe-prints', 'dog', 'hamburger', 'laptop', 'camera-retro', 'car-side', 'tshirt', 'briefcase-medical',
         'pump-soap', 'archive', 'utensils', 'couch', 'skiing-nordic', 'truck', 'suitcase-rolling', 'clock', 'wine-glass-alt',
         'people-carry', 'charging-station', 'fish', 'umbrella-beach', 'feather-alt', 'warehouse']
     }

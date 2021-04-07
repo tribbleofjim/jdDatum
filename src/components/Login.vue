@@ -73,6 +73,7 @@ export default {
   },
   methods: {
     async login () {
+      const _this = this
       const res = await this.$axios.post('/login', {
         params: {
           'phone': this.loginForm.phone,
@@ -80,21 +81,22 @@ export default {
         }
       })
       console.log(res)
-      if (res.success) {
-        this.$cookies.put('user_phone')
-        this.$notify.success({
+      if (res.data.success) {
+        _this.$cookies.set('user_phone')
+        _this.$notify.success({
           title: '登录信息',
-          message: res.message
+          message: res.data.message
         })
-        this.$router.push({path: `/categories`})
+        _this.$router.push({path: `/categories`})
       } else {
-        this.$notify.error({
+        _this.$notify.error({
           title: '登录信息',
-          message: res.message
+          message: res.data.message
         })
       }
     },
     async register () {
+      const _this = this
       const res = await this.$axios.post('/register', {
         params: {
           'phone': this.registerForm.phone,
@@ -103,15 +105,15 @@ export default {
         }
       })
       console.log(res)
-      if (res.success) {
-        this.$notify.success({
+      if (res.data.success) {
+        _this.$notify.success({
           title: '注册信息',
-          message: res.message
+          message: res.data.message
         })
       } else {
-        this.$notify.error({
+        _this.$notify.error({
           title: '注册信息',
-          message: res.message
+          message: res.data.message
         })
       }
     },
